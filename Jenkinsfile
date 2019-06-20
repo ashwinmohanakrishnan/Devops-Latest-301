@@ -4,6 +4,7 @@ pipeline {
         branch = 'master'
         scmUrl = 'https://github.com/ashwinmohanakrishnan/Devops-301.git'
         serverPort = '8080'
+        scannerHome = tool 'sonar'
         developmentServer = 'dev-myproject.mycompany.com'
         stagingServer = 'staging-myproject.mycompany.com'
         productionServer = 'production-myproject.mycompany.com'
@@ -36,7 +37,7 @@ pipeline {
         }
         stage('SonarQube analysis') {
             // requires SonarQube Scanner 2.8+
-             def scannerHome = tool name: 'sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation';
+            
           withSonarQubeEnv('My SonarQube Server') {
           sh "${scannerHome}/bin/sonar-scanner"
          }
