@@ -35,13 +35,14 @@ pipeline {
                 )
             }
         }
-        stage('SonarQube analysis') {
-            // requires SonarQube Scanner 2.8+
-            
-          withSonarQubeEnv('My SonarQube Server') {
-          sh "${scannerHome}/bin/sonar-scanner"
-         }
-  }
+        stage('Sonarqube') {
+  
+             steps {
+                   withSonarQubeEnv('sonar') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                     }
+                    }
+        }
 
        
     }
