@@ -19,12 +19,17 @@ pipeline {
                 git branch: branch, credentialsId: 'git', url: scmUrl
             }
         }
-
+ stage('build') {
+            steps {
+                
+                sh 'mvn clean install'
+            }
+        }
         stage('Sonarqube') {
   
              steps {
                    withSonarQubeEnv('sonar') {
-                        sh "mvn clean install sonar:sonar"
+                        sh "mvn sonar:sonar"
                      }
              }
         }
@@ -46,12 +51,7 @@ pipeline {
         
         
         
-        stage('build') {
-            steps {
-                
-                sh 'mvn clean install'
-            }
-        }
+       
 
         stage ('test') {
             steps {
