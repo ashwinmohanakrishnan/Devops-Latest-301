@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         branch = 'master'
-        scmUrl = 'https://github.com/ashwinmohanakrishnan/Devops-301.git'
+        scmUrl = 'https://github.com/ashwinmohanakrishnan/Devops-Latest-301.git'
         serverPort = '8080'
         scannerHome = tool 'sonar'
         developmentServer = 'dev-myproject.mycompany.com'
