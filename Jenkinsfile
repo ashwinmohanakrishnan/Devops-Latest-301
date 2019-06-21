@@ -62,6 +62,22 @@ pipeline {
             }
         }
         
+     stage('Push to Artifactory') {
+      // Push to Artifactory
+      def server = Artifactory.server "Artifactory"
+
+      def uploadSpec = """{
+        "files": [
+          {
+            "pattern": "target/*.jar",
+            "target": "ashwin/${env.BUILD_NUMBER}/"
+          }
+        ]
+      }"""
+      // Upload to Artifactory.
+      server.upload(uploadSpec) 
+   }
+
 
        
     }
