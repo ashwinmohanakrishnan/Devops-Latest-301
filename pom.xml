@@ -67,6 +67,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+                			<mainClass>com.employee.employeeManagement.EmployeeManagementApplication</mainClass>
+            			</configuration>
 			</plugin>
 		</plugins>
 	</build>
