@@ -82,9 +82,28 @@ pipeline {
          }
    }
 
+                    stage('Pull to Artifactory') {
+                               steps{
+                                      script {
+                                        // Pull to Artifactory
+                                        def server = Artifactory.server "Artifactory"
 
-       
-    }
+                                        def downloadSpec = """{
+                                              "files": [
+                                                {
+                                                     "pattern": "ashwin/${env.BUILD_NUMBER}/*.jar",
+                                                     "target": ""
+                                                }
+                                              ]
+                                        }"""
+                                        // Download from Artifactory.
+                                        server.download(downloadSpec)
+                                              }
+                                      }
+                          }
+
+
+        }
     post {
         failure {
             mail to: 'team@example.com', subject: 'Pipeline failed', body: "${env.BUILD_URL}"
