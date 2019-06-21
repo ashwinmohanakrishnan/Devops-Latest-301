@@ -92,7 +92,7 @@ pipeline {
                                               "files": [
                                                 {
                                                      "pattern": "ashwin/${env.BUILD_NUMBER}/*.jar",
-                                                     "target": ""
+                                                     "target": "artifact/"
                                                 }
                                               ]
                                         }"""
