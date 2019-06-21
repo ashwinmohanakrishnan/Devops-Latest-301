@@ -103,6 +103,13 @@ pipeline {
                                       }
                           }
 
+        
+        stage('Deploy War to Tomcat') {
+ 	                steps{
+ 	                    echo 'Deploying....'
+ 	                    sh 'scp ./artifacts/${env.BUILD_URL}/employeeManagement-0.0.1-SNAPSHOT.jar ubuntulogin@ugkrx73290dns.EastUS2.cloudapp.azure.com:/home/Docker'
+ 	        }
+ 	}
                
         }
     post {
