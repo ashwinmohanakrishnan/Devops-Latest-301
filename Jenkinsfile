@@ -108,7 +108,7 @@ pipeline {
  	                steps{
  	                    echo 'Deploying....'
  	                    sh "scp ./artifact/${env.BUILD_NUMBER}/employeeManagement-0.0.1-SNAPSHOT.jar ubuntulogin@ugkrx73290dns.EastUS2.cloudapp.azure.com:/home/ubuntulogin/Docker"
-                        sh "ssh ubuntulogin@ugkrx73290dns.EastUS2.cloudapp.azure.com 'sudo kill $(sudo lsof -t -i:8080)'"
+                        sh "ssh ubuntulogin@ugkrx73290dns.EastUS2.cloudapp.azure.com 'sudo kill "$(sudo lsof -t -i:8080)"'"
                         sh "ssh ubuntulogin@ugkrx73290dns.EastUS2.cloudapp.azure.com 'nohop java -jar /home/ubuntulogin/Docker/*.jar &'"
  	        }
  	}
