@@ -23,7 +23,7 @@ pipeline {
  stage('build') {
             steps {
                 
-                sh 'mvn'
+                sh 'mvn clean'
             }
         }
         stage('Sonarqube') {
