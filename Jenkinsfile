@@ -23,7 +23,7 @@ pipeline {
  stage('build') {
             steps {
                 
-                sh 'mvn clean package'
+                sh 'mvn install -Dma.test.skip=true'
             }
         }
         stage('Sonarqube') {
